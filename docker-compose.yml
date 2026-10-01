@@ -1,0 +1,36 @@
+services:
+  app:
+    image: munchlens-app:latest
+    container_name: munchlens-app
+    restart: unless-stopped
+    ports:
+      - '3002:3000'
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: munchlens-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: munchlens
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: munchlens
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5434:5432'
+
+  redis:
+    image: redis:7-alpine
+    container_name: munchlens-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

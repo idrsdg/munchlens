@@ -1,0 +1,32 @@
+
+# --- secrets & local files (added before first push) ---
+.env
+.env.*
+!.env.example
+!.env.local.example
+*.pem
+*.key
+*.jks
+*.keystore
+key.properties
+*.ovpn
+*.p12
+tmp_htpasswd.txt
+acl.txt
+.vercel/
+# --- build/deps ---
+node_modules/
+.next/
+out/
+dist/
+build/
+.dart_tool/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.idea/
+*.tar.gz
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
